@@ -14,6 +14,14 @@
     <script>
         function classify() {
             const text = document.getElementById("text").value;
+
+            //issue 2번, 빈 텍스트로 분류하려고 할 때 생기는 문제 해결
+            const result = document.getElementById("result")
+            if(!text){
+                result.innerText = "메세지를 입력해주세요"
+                return;
+            }
+
             fetch("/classify", {
                 method: "POST",
                 body: JSON.stringify({ text })
